@@ -51,6 +51,7 @@ public class KVClass {
      * HashTable容器在竞争激烈的并发环境下表现出效率低下的原因是所有访问HashTable的线程都必须竞争同一把锁,ConcurrentHashMap使用多把锁,分别锁容器中一部分数据
      */
     class CHMClass {
+
         final ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
 
         /**
