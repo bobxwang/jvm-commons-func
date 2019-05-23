@@ -13,6 +13,9 @@ public final class IpConverter {
     long result = 0;
 
     String[] ipAddressInArray = ipAddress.split("\\.");
+    if (ipAddressInArray.length != 4) {
+      throw new IllegalArgumentException("input argument is not a ip format string");
+    }
     for (int i = 3; i >= 0; i--) {
       long ip = Long.parseLong(ipAddressInArray[3 - i]);
       result |= ip << (i * 8);
