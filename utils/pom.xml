@@ -50,6 +50,15 @@
     </dependency>
 
     <dependency>
+      <groupId>com.sun.tools.btrace</groupId>
+      <artifactId>btrace-agent</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.tools.btrace</groupId>
+      <artifactId>btrace-boot</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
