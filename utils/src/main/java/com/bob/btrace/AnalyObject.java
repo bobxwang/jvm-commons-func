@@ -18,7 +18,7 @@ import com.sun.btrace.annotations.Return;
  * @author wangxiang
  * @create 2019-04-24
  */
-@BTrace(trusted = true)
+@BTrace
 public class AnalyObject {
 
   @OnMethod(

@@ -75,14 +75,14 @@
       <dependency>
         <groupId>com.sun.tools.btrace</groupId>
         <artifactId>btrace-agent</artifactId>
-        <version>1.3.11</version>
+        <version>1.2.3</version>
         <scope>provided</scope>
       </dependency>
       <!--<version>1.2.3</version> btrace 版本高于 1.2.3 需要自行编译-->
       <dependency>
         <groupId>com.sun.tools.btrace</groupId>
         <artifactId>btrace-boot</artifactId>
-        <version>1.3.11</version>
+        <version>1.2.3</version>
         <scope>provided</scope>
       </dependency>
 
