@@ -1,6 +1,6 @@
 @startuml
 
-title Generalization
+title generalization
 
 class Vihical
 class Car
