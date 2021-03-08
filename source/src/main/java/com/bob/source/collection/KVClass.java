@@ -62,4 +62,12 @@ public class KVClass {
          */
     }
 
+    /**
+     * 特殊之处在于里面的 entry 可能会被GC自动删除，即使程序没有调用remove/clear
+     * 因为其特殊性，所以两次调用size或返回不一样的值，两次调用isEmpty也有可能不一样。其使用场景是缓存
+     */
+    class WeakHashMap {
+
+    }
+
 }

@@ -44,6 +44,26 @@ public class ListClass {
   }
 
   /**
+   * 顺序容器，允许放入 null 元素
+   */
+  class ArrayList {
+
+    transient Object[] elementData;
+
+    // 自动扩容，当向数组添加元素时，都要去检查添加后元素的个数是否会超出当前数组长度，如果超出将会进行扩容以满足数据的需求，扩容通过一个公开的方法实现
+    void ensureCapacity(int minCapacity) {
+    }
+
+    int Size;
+
+    // Fail-Fast，通过记录 modCount 参数实现，在面对并发的修改时，迭代器很快就会完全失败，而不是冒着在将来某个不确定时间发生任意不确定行为的风险
+  }
+
+  class LinkedList {
+    // 所有跟下标相关的操作都是线性时间
+  }
+
+  /**
    * 基于数组实现的有界队列，一旦创建后容量不可更改
    */
   class ArrayBlockingQueue {

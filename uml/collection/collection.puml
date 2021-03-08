@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Iterable<T>
+interface Collection<E>
+interface List<E>
+interface Queue<E>
+interface Deque<E>
+interface Set<E>
+interface SortedSet<E>
+Iterable <|-- Collection
+Collection <|-- List
+Collection <|-- Queue
+Collection <|-- Set
+Queue <|-- Deque
+Set <|-- SortedSet
+
+abstract class AbstractCollection<E>
+abstract class AbstractList<E>
+abstract class AbstractSequentialList<E>
+
+Collection <|-- AbstractCollection
+
+AbstractCollection <|-- AbstractList
+List <|-- AbstractList
+AbstractList <|-- AbstractSequentialList
+
+class ArrayList<E> {
+  Object[] elementData
+  int size
+}
+class LinkedList<E> {
+transient Node<E> first
+transient Node<E> last
+transient int size = 0
+}
+
+AbstractList <|-- ArrayList
+AbstractSequentialList <|-- LinkedList
+Deque <|-- LinkedList
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+@enduml
