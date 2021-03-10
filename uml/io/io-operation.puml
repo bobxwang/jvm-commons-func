@@ -1,0 +1,38 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+* <&flag>数据操作
+** <&globe>文件(file)
+*** FileInputStream
+*** FileOutputStream
+*** FileReader
+*** FileWriter
+** <&graph>数组([])
+*** ByteArrayInputSteam
+*** ByteArrayOutpurStream
+*** CharArrayReader
+*** CharArrayWriter
+** <&pulse>管道操作
+*** PipedInputStream
+*** PipedOutputSteam
+*** PipedReader
+*** PipedWriter
+** <&people>基本数据类型
+*** DataInputStream
+*** DataOutputStream
+** <&star>缓冲操作
+*** BufferedInputStream
+*** BufferedOutputSteam
+*** BufferReader
+*** BufferWriter
+** 打印
+*** PrintStream
+*** PrintWriter
+** 对象序列化反序列化
+*** ObjectInputStream
+*** ObjectOutputStream
+** 转换
+*** InputStreamReader
+*** OutputStreamWriter
+
+@endmindmap

@@ -1,0 +1,24 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+title 字节流
+
+* <&flag>字节流
+** <&globe>InputStream
+*** ByteArrayInputStream
+*** PipedInputStream
+*** FilterInputStream
+**** BufferedInputStream
+**** DataInputStream
+*** FileInputStream
+** <&star>OutputStream
+*** ByteArrayOutputStream
+*** PipedOutputStream
+*** FilterOutputStream
+**** BufferedOutputStream
+**** DataOutputStream
+**** PrintStream
+*** FileOutputStream
+*** ObjectOutputStream
+
+@endmindmap

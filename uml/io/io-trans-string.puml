@@ -1,0 +1,23 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+title 字符流
+
+* <&flag>字符流
+** <&globe>Reader
+*** CharArrayReader
+*** PipedReader
+*** FilterReader
+*** BufferedReader
+*** InputStreamReader
+**** FileReader
+** <&graph>Writer
+*** CharArrayWriter
+*** PipedWriter
+*** FilterWriter
+*** BufferedWriter
+*** OutputStreamWriter
+**** FileWriter
+*** PrintWriter
+
+@endmindmap

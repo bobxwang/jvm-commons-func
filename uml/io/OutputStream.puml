@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class OutputStream
+class FilterOutputStream
+class BufferedOutputStream
+class ByteArrayOutputStream
+class PipedOutputStream
+
+OutputStream <|-- FilterOutputStream
+FilterOutputStream <|-- BufferedOutputStream
+OutputStream <|-- ByteArrayOutputStream
+OutputStream <|-- PipedOutputStream
+
+@enduml
