@@ -1,0 +1,84 @@
+
+com.netflix.loadbalancer.Server
+com.netflix.niws.loadbalancer.DiscoveryEnabledServer
+### spring 针对各种注册中心抽象出来的服务信息
+org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServer
+org.springframework.cloud.zookeeper.discovery.ZookeeperServer
+org.springframework.cloud.alibaba.nacos.ribbon.NacosServer
+org.springframework.cloud.consul.discovery.ConsulServer
+
+### 服务列表
+com.netflix.loadbalancer.ServerList<Server>
+org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList<DiscoveryEnabledServer>
+
+---- 以上是服务端相关 ----
+
+### spring 抽象出来的服务实例信息
+org.springframework.cloud.client.ServiceInstance
+org.springframework.cloud.client.serviceregistry.Registration
+org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration
+
+### spring 抽象出来的服务注册跟反注册接口，委托 CloudEurekaClient 进行实例的注册与反注册
+org.springframework.cloud.client.serviceregistry.ServiceRegistry
+org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry
+
+### spring 基于 eureka 的服务发现注册实现，即能发现也能注册，同时注册心跳
+com.netflix.discovery.EurekaClient
+com.netflix.discovery.DiscoveryClient
+org.springframework.cloud.netflix.eureka.CloudEurekaClient
+
+### 读取配置文件中 eureka.instance 的信息，组装一个实例
+org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean
+
+### 服务注册后会发出一个事件信息
+org.springframework.cloud.client.discovery.event.InstanceRegisteredEvent
+
+
+### 委托 ServiceRegistry 进行服务注册与反注册，同时发布一个 InstanceRegisteredEvent 事件出来
+org.springframework.cloud.client.serviceregistry.AutoServiceRegistration
+org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration
+
+---- 以上是客户端相关 ----
+
+
+### spring 抽象的服务发现获取接口，只能获取，默认有个 bean，实例是 EurekaDiscoveryClient，执行时会被拦截，委托到 RibbonLoadBalancerClient
+org.springframework.cloud.client.discovery.DiscoveryClient
+org.springframework.cloud.client.discovery.simple.SimpleDiscoveryClient
+org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient
+org.springframework.cloud.client.discovery.composite.CompositeDiscoveryClient
+
+### 委托给 ILoadBalancer 进行目标机器的选择，在 RibbonAutoConfiguration 中进行 Bean 的注册
+org.springframework.cloud.client.loadbalancer.ServiceInstanceChooser
+org.springframework.cloud.client.loadbalancer.LoadBalancerClient
+org.springframework.cloud.netflix.ribbon.RibbonLoadBalancerClient
+
+### 选择某一台进行调用
+com.netflix.loadbalancer.ILoadBalancer
+com.netflix.loadbalancer.AbstractLoadBalancer
+com.netflix.loadbalancer.BaseLoadBalancer
+com.netflix.loadbalancer.DynamicServerListLoadBalancer
+com.netflix.loadbalancer.ZoneAwareLoadBalancer
+
+interface
+class PollingServerListUpdater
+
+
+org.springframework.cloud.netflix.ribbon.support.AbstractLoadBalancingClient
+
+
+org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration  EurekaClientConfigBean/EurekaInstanceConfigBean
+org.springframework.cloud.netflix.ribbon.eureka.EurekaRibbonClientConfiguration   IPing/ServerList/ServerIntrospector
+org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration  IRule/ServerListUpdater
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,122 @@
+@startuml
+interface StatementHandler
+abstract class BaseStatementHandler
+class PreparedStatementHandler
+class SimpleStatementHandler
+class CallableStatementHandler
+class RoutingStatementHandler {
+	StatementHandler delegate
+}
+StatementHandler <|.. BaseStatementHandler
+StatementHandler <|-- RoutingStatementHandler
+BaseStatementHandler <|-- PreparedStatementHandler
+BaseStatementHandler <|-- SimpleStatementHandler
+BaseStatementHandler <|-- CallableStatementHandler
+RoutingStatementHandler *--> StatementHandler
+
+interface SqlSession {
+	+ getMapper<?>
+}
+interface SqlSessionFactory
+interface DisposableBean
+class DefaultSqlSession
+class SqlSessionManager
+class SqlSessionTemplate
+class DefaultSqlSessionFactory
+SqlSession <|-- DefaultSqlSession
+SqlSession <|-- SqlSessionManager
+SqlSession <|-- SqlSessionTemplate
+DisposableBean <|-- SqlSessionTemplate
+SqlSessionFactory <|-- DefaultSqlSessionFactory
+SqlSessionFactory <|-- SqlSessionManager
+DefaultSqlSession --> Executor
+DefaultSqlSessionFactory --> Configuration
+
+interface Executor
+abstract class BaseExecutor
+class CachingExecutor {
+	Executor delegate
+}
+class SimpleExecutor
+class ReuseExecutor
+class ClosedExecutor
+class BatchExecutor
+Executor <|-- BaseExecutor
+Executor <|-- CachingExecutor
+CachingExecutor *--> Executor
+BaseExecutor <|-- SimpleExecutor
+BaseExecutor <|-- ReuseExecutor
+BaseExecutor <|-- BatchExecutor
+BaseExecutor <|-- ClosedExecutor
+
+interface ParameterHandler
+interface ResultSetHandler
+class DefaultParameterHandler
+class DefaultResultSetHandler
+ParameterHandler <|-- DefaultParameterHandler
+ResultSetHandler <|-- DefaultResultSetHandler
+
+class MappedStatement {
+	+ BoundSql getBoundSql
+}
+class BoundSql
+interface SqlSource {
+	+ BoundSql getBoundSql
+}
+class DynamicSqlSource
+class ProviderSqlSource
+class RawSqlSource
+class StaticSqlSource
+SqlSource <|-- DynamicSqlSource
+SqlSource <|-- ProviderSqlSource
+SqlSource <|-- RawSqlSource
+SqlSource <|-- StaticSqlSource
+SqlSource ..> BoundSql
+MappedStatement --> SqlSource
+
+class XMLConfigBuilder {
+	+ Configuration parse
+}
+
+class Configuration {
+	void addMapper
+	getMapper<?>
+}
+class MapperRegistry {
+	+ void addMapper<?>
+	- Map<Class<?>, MapperProxyFactory<?>> knownMappers
+	+ getMapper<?>
+}
+class MapperProxyFactory<?>{
+	newInstance(MapperProxy)
+	newInstance(SqlSession)
+}
+interface InvocationHandler
+class MapperProxy<?> {
+	+ invoke
+}
+class SqlSessionInterceptor
+InvocationHandler <|-- SqlSessionInterceptor
+InvocationHandler <|-- MapperProxy
+MapperRegistry --> MapperProxyFactory
+class MapperAnnotationBuilder
+class MapperMethod {
+	+ execute
+}
+
+class SqlSourceBuilder {
+	+ SqlSource parse
+}
+SqlSourceBuilder --> Configuration
+
+MapperProxyFactory --> MapperProxy
+MapperProxy --> MapperMethod
+Configuration <--> MapperRegistry
+class SqlSessionUtils
+class MapperScannerConfigurer
+class ClassPathMapperScanner
+class ClassPathBeanDefinitionScanner
+MapperScannerConfigurer --> ClassPathMapperScanner
+ClassPathBeanDefinitionScanner <|-- ClassPathMapperScanner
+
+@enduml

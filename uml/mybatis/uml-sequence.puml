@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor client
+client -> SqlSessionFactoryBuilder : build
+activate SqlSessionFactoryBuilder
+SqlSessionFactoryBuilder -> XMLConfigBuilder : new XMLConfigBuilder.parse
+activate XMLConfigBuilder
+XMLConfigBuilder --> SqlSessionFactoryBuilder : Configuration
+destroy XMLConfigBuilder
+
+SqlSessionFactoryBuilder --> client : SqlSessionFactory
+destroy SqlSessionFactoryBuilder
+
+client -> SqlSessionFactory : openSession
+activate SqlSessionFactory
+SqlSessionFactory -> client: SqlSession
+
+client -> SqlSession: selectOne
+activate SqlSession
+SqlSession -> Configuration: getMapper(SqlSession)
+Configuration -> MapperRegistry: getMapper(SqlSession)
+activate MapperRegistry
+MapperRegistry -> MapperProxyFactory : newInstance(SqlSession)
+activate MapperProxyFactory
+MapperProxyFactory -> MapperRegistry : MapperProxy
+destroy MapperProxyFactory
+MapperRegistry -> Configuration
+destroy MapperRegistry
+Configuration -> SqlSession
+SqlSession -> MapperProxy : invoke
+MapperProxy -> MapperMethod : execute
+MapperMethod -> MapperProxy
+MapperProxy -> SqlSession
+SqlSession -> client
+destroy SqlSession
+@enduml
