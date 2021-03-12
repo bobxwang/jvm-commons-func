@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 mvn deploy:deploy-file \
 -DgroupId=taobao \
 -DartifactId=taobao \

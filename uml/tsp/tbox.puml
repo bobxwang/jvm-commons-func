@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/component-diagram
+package "Some Car" {
+  Car - [T-Box]
+}
+
+node "TSP GeteWay" {
+  Socket - [received data]
+  [T-Box] --> Socket : Use GB32960
+}
+
+cloud {
+  [kafka]
+  [Storm/SparkStreaming]
+}
+
+database "ES"
+database "DB"
+database "HIVE"
+
+[received data] --> [kafka] : push
+[kafka] --> [Storm/SparkStreaming] : pull
+[Storm/SparkStreaming] --> [ES] : push
+[Storm/SparkStreaming] --> [DB] : push
+[Storm/SparkStreaming] --> [HIVE] : push
+@enduml
