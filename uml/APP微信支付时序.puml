@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+title: 微信支付时序图
+participant 微信支付用户 as user
+participant 微信客户端 as wxc
+participant APP客户端 as appc
+participant 后台系统 as apps
+participant 微信支付系统 as wxs
+
+user->appc: 打开APP客户端()
+appc->appc: 扫描二维码()
+appc->apps: 请求生成订单()
+apps->wxs: 调用统一下单API()
+wxs->wxs: 生成预付单()
+wxs-->>apps: 返回预付单信息(prepay_id)
+apps->apps: 生成带签名的客户端支付信息()
+apps-->>appc: 返回信息(prepay_id,sign等)
+user->appc: 用户确认支付()
+appc-->wxc: 支付参数通过调用SDK调起微信支付()
+wxc->wxs: 发起支付请求()
+wxs->wxs: 验证支付参数, APP支付权限等()
+wxs-->>wxc: 返回需要支付授权()
+user->wxc: 用户确认支付, 输入密码()
+wxc->wxs: 提交支付授权()
+wxs->wxs: 验证授权, 完成支付交易()
+wxs-->>apps: 异步通知商户支付结果()
+apps->apps: 接收和保存支付通知()
+apps->>wxs: 返回告知已成功接收处理()
+wxs-->wxc: 返回支付结果, 发送微信消息提示()
+wxc->appc: 将支付状态通过商户APP已实现的回调接口执行回调()
+appc->apps: 后台查询实际支付结果()
+apps->wxs: 调用微信查询API查询支付结果()
+wxs-->>apps: 返回支付结果()
+apps-->appc: 返回支付结果
+appc-->user: 展示支付结果()
+appc->appc: APP自有逻辑()
+
+@enduml
