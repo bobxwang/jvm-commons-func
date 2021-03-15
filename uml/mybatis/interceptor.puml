@@ -1,0 +1,8 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Interceptor
+class InterceptorChain
+InterceptorChain "1" *-- "many" Interceptor: contains
+
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface ParameterHandler
+interface ResultSetHandler
+class DefaultParameterHandler
+class DefaultResultSetHandler
+
+ParameterHandler <|-- DefaultParameterHandler
+ResultSetHandler <|-- DefaultResultSetHandler
+
+@enduml

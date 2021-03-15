@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package javax.servlet <<Folder>> {
+
+  interface Servlet
+  abstract class GenericServlet
+}
+
+package javax.servlet.http <<Folder>> {
+
+  abstract class HttpServlet
+}
+
+package org.springframework.web.servlet <<Folder>> {
+
+  abstract class HttpServletBean
+  abstract class FrameworkServlet
+  class DispatcherServlet
+}
+
+Servlet <|-- GenericServlet
+GenericServlet <|-- HttpServlet
+HttpServlet <|- HttpServletBean
+HttpServletBean <|- FrameworkServlet
+FrameworkServlet <|-- DispatcherServlet
+
+@enduml

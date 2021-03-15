@@ -49,31 +49,6 @@ BaseExecutor <|-- ReuseExecutor
 BaseExecutor <|-- BatchExecutor
 BaseExecutor <|-- ClosedExecutor
 
-interface ParameterHandler
-interface ResultSetHandler
-class DefaultParameterHandler
-class DefaultResultSetHandler
-ParameterHandler <|-- DefaultParameterHandler
-ResultSetHandler <|-- DefaultResultSetHandler
-
-class MappedStatement {
-	+ BoundSql getBoundSql
-}
-class BoundSql
-interface SqlSource {
-	+ BoundSql getBoundSql
-}
-class DynamicSqlSource
-class ProviderSqlSource
-class RawSqlSource
-class StaticSqlSource
-SqlSource <|-- DynamicSqlSource
-SqlSource <|-- ProviderSqlSource
-SqlSource <|-- RawSqlSource
-SqlSource <|-- StaticSqlSource
-SqlSource ..> BoundSql
-MappedStatement --> SqlSource
-
 class XMLConfigBuilder {
 	+ Configuration parse
 }
