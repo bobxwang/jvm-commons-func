@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 mvn deploy:deploy-file \
+-X \
 -DgroupId=taobao \
 -DartifactId=taobao \
 -Dversion=0.0.1-SNAPSHOT \
