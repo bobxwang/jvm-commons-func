@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package org.apache.ibatis.builder.annotation <<Folder>> {
+  class MapperAnnotationBuilder
+}
+
+package com.baomidou.mybatisplus.core <<Folder>> {
+  class MybatisMapperAnnotationBuilder
+}
+
+MapperAnnotationBuilder <|-- MybatisMapperAnnotationBuilder
+@enduml

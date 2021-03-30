@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package org.apache.ibatis.cache <<Folder>> {
+  interface Cache
+  class CacheKey
+}
+
+package org.apache.ibatis.cache.decorators <<Folder>> {
+  class LruCache
+  class FifoCache
+  class BlockingCache
+  class TransactionalCache
+}
+
+package org.apache.ibatis.cache.impl <<Folder>> {
+
+  class PerpetualCache
+}
+
+Cache <|-- LruCache
+Cache <|-- FifoCache
+Cache <|-- BlockingCache
+Cache <|-- PerpetualCache
+Cache <|-- TransactionalCache
+
+@enduml
