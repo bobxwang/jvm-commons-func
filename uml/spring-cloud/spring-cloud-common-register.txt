@@ -70,8 +70,10 @@ org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration  EurekaCl
 org.springframework.cloud.netflix.ribbon.eureka.EurekaRibbonClientConfiguration   IPing/ServerList/ServerIntrospector
 org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration  IRule/ServerListUpdater
 
-
-
+### post 优雅关闭
+actuator/service-registry  --> 告诉注册中心不再接受路由转发
+sleep   --> 已路由服务继续执行
+actuator/shutdown  --> 最后再关闭服务
 
 
 

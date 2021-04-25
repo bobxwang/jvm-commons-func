@@ -9,6 +9,7 @@
   <modules>
     <module>utils</module>
     <module>source</module>
+    <module>leet</module>
   </modules>
   <packaging>pom</packaging>
   <name>jvm-commons-func</name>

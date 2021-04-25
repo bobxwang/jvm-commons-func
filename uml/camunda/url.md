@@ -1,0 +1,2 @@
+- [Flowable将单任务节点转会签节点](https://www.jianshu.com/p/5ede0a391129)
+- [Camunda各种扩展，包含加签回退等等](https://github.com/AndiHappy/customcamunda)

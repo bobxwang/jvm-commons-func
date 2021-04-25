@@ -11,7 +11,12 @@ import java.util.Arrays;
 public class QuickSort {
 
   private String desc() {
-    return "快排是不稳定的算法，平均时间复杂度是O(n*logn),最差是O(n^2)，其需要一个栈空间来实现递归，空间复杂度也是O(logn)";
+    return "快排是不稳定的算法，平均时间复杂度是O(n*logn),最差是O(n^2)，其需要一个栈空间来实现递归，空间复杂度也是O(logn)\r\n"
+        + "https://www.runoob.com/data-structures/random-quick-sort.html";
+  }
+
+  public static void quickSort(Integer[] arr) {
+    quickSort(arr, 0, arr.length - 1);
   }
 
   /**
@@ -21,7 +26,7 @@ public class QuickSort {
    * @param start 开始位置
    * @param end 结束位置
    */
-  public static void quickSort(Integer[] arr, int start, int end) {
+  private static void quickSort(Integer[] arr, int start, int end) {
     if (start < end) {
       // 选择一个基准值
       int pivot = arr[start];
@@ -47,7 +52,6 @@ public class QuickSort {
       arr[i] = pivot;
       // 一轮结束
       System.out.println("temp sort:" + Arrays.toString(arr));
-
       // 递归调用
       quickSort(arr, start, i - 1);
       quickSort(arr, i + 1, end);

@@ -52,7 +52,6 @@ public class TreeClass {
         treeList.get(index).setRight(treeList.get(2 * index + 2));
       }
       treeList.get(index).setLeft(treeList.get(2 * index + 1));
-
     }
     return root;
   }

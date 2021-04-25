@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor bob #Red
+bob -> workflow_requestbase: 根据creater获得要删除的RequestID
+workflow_requestbase --> bob
+bob -> contract: 要保留的RequestID
+contract --> bob
+
+bob -> workflow_requestlog: 删除非曹操数据
+bob -> workflow_requestdeletelog: 删除非曹操数据
+bob -> workflow_currentoperator: 删除非曹操数据
+bob -> workflow_nodeovertime: 删除非曹操数据
+bob -> formtable_xxx: 删除非曹操数据
+bob -> formtable_dt_xxx: 删除非曹操数据
+
+@enduml

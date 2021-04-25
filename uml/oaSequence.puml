@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor bob #Red
+bob -> usercenter_organization: 获得曹操的组织数据
+usercenter_organization --> bob
+
+bob -> usercenter_user: 获得曹操的用户数据
+usercenter_user --> bob
+
+bob -> oa_news: 根据曹操组织数据删除非曹操新闻
+oa_news --> bob:
+
+bob -> es_news: 根据曹操组织数据删除非曹操新闻
+es_news --> bob:
+
+@enduml
