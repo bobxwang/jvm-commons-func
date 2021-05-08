@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+interface ObjectFactory
+class DefaultObjectFactory
+
+ObjectFactory <|-- DefaultObjectFactory
+
+interface ProxyFactory
+note top of ProxyFactory: 主要用于懒加载功能
+class CglibProxyFactory
+class JavassistProxyFactory
+
+ProxyFactory <|-- CglibProxyFactory
+ProxyFactory <|-- JavassistProxyFactory
+
+class MetaObject
+note top of MetaObject: 反射工具类，获取跟设置对象的属性值
+class SystemMetaObject {
+  static MetaObject forObject(Object object)
+}
+
+class MetaClass
+
+class ScriptRunner {
+  void runScript(Reader reader)
+}
+class SqlRunner
+
+@enduml
